@@ -27,6 +27,13 @@ https://github.com/user-attachments/assets/603a80b8-93ee-465a-8e7e-a17c37990853
 ## How it works ?
 <img width="1369" alt="Screenshot 2024-09-29 at 10 33 25 PM" src="https://github.com/user-attachments/assets/0e544776-5bd4-4ad6-a0c9-9794b69cf59d">
 
+### Features
+* Support for navigation via `a` tags in HTML.
+* In-memory caching of pages.
+  * Load times are instant once the page is in cache.
+* Basic watermarking support.
+  * can be extended to make OCR difficult.     
+
 ## Running Locally
 * `ORIGIN_URL="<your-website.com>" make run`, then access any of the url shown in the logs lines like this to access your OnlyHumans instance.
   ```
