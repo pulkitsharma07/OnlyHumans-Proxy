@@ -61,3 +61,6 @@ One crude idea is to move all your static content behind OnlyHumans and serve th
 > This will not prevent scraping, scrapers can use OCR ...
 
 Yes, definitely they can use it, but OCR is resource intensive as compared to parsing HTML and extracting data from it. So scaling a OCR based scraping project will be a lot more expensive than a regular scraper. Also OnlyHumans can be modified to add multiple layers of obfuscation/noise techniques to fool OCR tools. at the same time keeping content readable for humans. Check this for reference https://github.com/tesseract-ocr/tesseract/issues/1700 
+
+
+# [Discuss](https://github.com/pulkitsharma07/OnlyHumans-Proxy/discussions)
