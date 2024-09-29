@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.overlay-container {
+  position: relative;
+  display: inline-block;
+}
+
+.overlay-image {
+  display: block;
+}
+
+.overlay-box {
+  position: absolute;
+  transition: border 0.1s ease-in;
+  transition: background-color 0.1s ease-in;
+}
+
+.overlay-box.visible {
+  border: 0.5px dashed black;
+  background-color: rgba(00, 00, 100, 0.2); /* Semi-transparent red */
+  cursor: pointer;
+}
