@@ -41,7 +41,7 @@ https://github.com/user-attachments/assets/603a80b8-93ee-465a-8e7e-a17c37990853
 ## FAQ
 > What kind of websites are supported as the `ORIGIN_URL` ?
 
-OnlyHumans uses `puppeteer` to open the `ORIGIN_URL`, Although `puppeteer` supports pretty much all kinds of websites, OnlyHumans currently is usable only for static websites which have `link` (`<a>` href) based navigation and doesn't have any dynamic media (videos, etc). Give it a try and let me know...
+OnlyHumans uses `puppeteer` to open the `ORIGIN_URL`, Although `puppeteer` supports pretty much all kinds of websites, OnlyHumans currently is usable only for static websites which have `link` (`<a>` href) based navigation and doesn't have any dynamic media (videos, etc). This is because I am not able to figure out how to add support for other types of interactive elements. Do check the other FAQs below and give it a try.
 
 > Why not just stream the contents of the `puppeteer` browser to the client instead of taking a screenshot ?
 
