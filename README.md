@@ -8,4 +8,5 @@
 <br>
 
 ## Demo
-<video src="public/demo.mov">
+https://github.com/user-attachments/assets/603a80b8-93ee-465a-8e7e-a17c37990853
+
