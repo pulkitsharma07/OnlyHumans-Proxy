@@ -4,12 +4,12 @@ const { Jimp } = require("jimp");
 const NodeCache = require("node-cache");
 
 const app = express();
-const BACKEND_URL = process.env.BACKEND_URL;
+const ORIGIN_URL = process.env.ORIGIN_URL;
 const CACHE_TTL_SECONDS = process.env.CACHE_TTL_SECONDS || 60;
 const pageCache = new NodeCache();
 
-if (!BACKEND_URL) {
-  console.error("BACKEND_URL is not set");
+if (!ORIGIN_URL) {
+  console.error("ORIGIN_URL env var is not set");
   process.exit(1);
 }
 
@@ -82,10 +82,11 @@ async function getBoundingBoxes(page) {
   });
 
   boundingBoxes = boundingBoxes.sort((a, b) => b.area - a.area);
+
   boundingBoxes = boundingBoxes.map((box) => {
-    // Remove BACKEND_URL from href
-    if (box.href.startsWith(BACKEND_URL)) {
-      box.href = box.href.replace(BACKEND_URL, "");
+    // cleanup
+    if (box.href.startsWith(ORIGIN_URL)) {
+      box.href = box.href.replace(ORIGIN_URL, "");
       box.link_type = "internal";
     } else if (box.href.startsWith("/")) {
       box.link_type = "not_supported";
@@ -105,14 +106,14 @@ app.get("/api", async (req, res) => {
     return res.json(pageCache.get(path));
   }
 
-  console.log("visiting..: " + BACKEND_URL + path);
+  console.log("visiting..: " + ORIGIN_URL + path);
   const browser = await puppeteer.launch({
     headless: true,
   });
 
   const page = await browser.newPage();
   await page.setViewport({ width: 1920, height: 1080 });
-  await page.goto(BACKEND_URL + path, { waitUntil: "networkidle2" });
+  await page.goto(ORIGIN_URL + path, { waitUntil: "networkidle2" });
 
   await page.evaluate(() => {
     window.scrollTo(0, 0);
@@ -136,5 +137,5 @@ app.get("/api", async (req, res) => {
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Puppeteer Server is running on port ${PORT}`);
+  console.log(`Puppeteer Server started on port ${PORT}`);
 });
