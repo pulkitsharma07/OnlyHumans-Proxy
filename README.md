@@ -17,7 +17,7 @@ Traditional approaches use captchas, or other sophisticated bot detection method
 
 `Crawling As a Service` is on the rise, LLM models are being freely trained on the text data of the web...No one honours `robots.txt` anymore, we need better approaches to control who gets access to human generated content. Using this proxy you can take your existing website* and serve it to humans, `OnlyHumans`.
 
-* Refer to [FAQ](#FAQ) section below.
+*Refer to [FAQ](#FAQ) section below.
 
 ## Demo
 In the demo below, you can see [HN](https://news.ycombinator.com/) being served via OnlyHumans. There are large watermarks displayed on the page as to not confuse it with the actual HN website. Current version supports clicking on links, i.e. HTML `<a>` tags. On accessing the page or clicking on a link you get a `png` back from the server instead of a traditional `HTML/JS/CSS` response.
