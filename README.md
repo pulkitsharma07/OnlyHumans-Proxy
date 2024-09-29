@@ -28,22 +28,29 @@ https://github.com/user-attachments/assets/603a80b8-93ee-465a-8e7e-a17c37990853
 <img width="1369" alt="Screenshot 2024-09-29 at 10 33 25 PM" src="https://github.com/user-attachments/assets/0e544776-5bd4-4ad6-a0c9-9794b69cf59d">
 
 ## Running Locally
-* `ORIGIN_URL="<url>" make run`, then access any of the url shown in the logs lines like this to access your OnlyHumans instance.
+* `ORIGIN_URL="<your-website.com>" make run`, then access any of the url shown in the logs lines like this to access your OnlyHumans instance.
   ```
   > vite preview --host
 
   ➜  Local:   http://localhost:4173/
   ➜  Network: http://192.168.1.4:4173/
   ```
-* On opening this page in the browser, the contents of the `ORIGIN_URL` should show up as an image.
+* On opening this page in the browser, the contents of the `ORIGIN_URL` should show up (as an image instead).
 * For running in dev mode use `run_dev` instead of `run` in the make command.
   
 ## FAQ
 > What kind of websites are supported as the `ORIGIN_URL` ?
-OnlyHumans uses `puppeteer` to open the `ORIGIN_URL`, Although `puppeteer` supports pretty much all kinds of websites, OnlyHumans currently only supports static websites which have `link` (`<a>` href) based navigation and doesn't have any dynamic media (videos,etc).
+
+OnlyHumans uses `puppeteer` to open the `ORIGIN_URL`, Although `puppeteer` supports pretty much all kinds of websites, OnlyHumans currently is usable only for static websites which have `link` (`<a>` href) based navigation and doesn't have any dynamic media (videos, etc). Give it a try and let me know...
 
 > Why not just stream the contents of the `puppeteer` browser to the client instead of taking a screenshot ?
-Yes this can be done, maybe future versions should go in this direction, but I am not inclined due to unnecessary resource overheads of streaming on the servers. Also I am not sure how will `caching` work with realtime streaming.
+
+Yes this can be done, maybe future versions should go in this direction, but I am not inclined due to unnecessary resource overheads of streaming on the servers. Also I am not sure how will caching work with realtime streaming. The current architecture of serving `png` images will utilise the existing global CDN infrastructure.
 
 > How can we support dynamic content/interactivity ?
+
 One crude idea is to move all your static content behind OnlyHumans and serve that as `iframes` on your page. So comment sections, or other fancy JS interactivity stuff can be done using regular web frameworks, but while serving any human generated content you can use an `iframe` which points to your OnlyHumans instance.
+
+> This will not prevent scraping, scrapers can use OCR ...
+
+Yes, definitely they can use it, but OCR is resource intensive as compared to parsing HTML and extracting data from it. So scaling a OCR based scraping project will be a lot more expensive than a regular scraper. Also OnlyHumans can be modified to add multiple layers of obfuscation/noise techniques to fool OCR tools. at the same time keeping content readable for humans. Check this for reference https://github.com/tesseract-ocr/tesseract/issues/1700 
